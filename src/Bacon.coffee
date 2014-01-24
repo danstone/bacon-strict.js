@@ -440,6 +440,7 @@ class Observable
             initSent = true
             prev = acc.getOrElse(-> undefined)
             next = _.cached(-> f(prev, event.value))
+            next()
             acc = new Some(next)
             sink (event.apply(next))
         else
